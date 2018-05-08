@@ -1,7 +1,43 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Short Wallaby Bookstore
+    link(rel='stylesheet', href='/stylesheets/meyers-reset.css')
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+    link(href='https://fonts.googleapis.com/css?family=Lato|Playfair+Display', rel='stylesheet')
+    script.
+      //packery logic
+      var elem = document.querySelector('.grid');
+      var pckry = new Packery( elem, {
+      // options
+      itemSelector: '.grid-item',
+      gutter: 10
+      });
+      // element argument can be a selector string
+      //   for an individual element
+      var pckry = new Packery( '.grid', {
+      // options
+      });
   body
     block content
+      main
+        // Navigation
+        section
+          #navigation.container
+            // logo
+            img#logo(src='images/short-wallaby.svg', alt='logo')
+            // search box
+            form.search
+              input#search-box(type='text', name='', value='Enter a Book Title or Author')
+              button#add-book(type='submit', name='button') Add Book
+            // add a book button
+        // Sections for different page views
+        // Home Page
+        section#home.tab-content
+          .grid
+            ul.grid-item
+              each book in books
+                li
+                  img(src=book.bookUrl)
